@@ -1,3 +1,4 @@
+import { TournamentsPage } from './../pages/tournaments/tournaments';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -38,4 +39,13 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  goHome() {
+    this.nav.push(MyTeamsPage);
+  }
+
+  goToTournaments() {
+    this.nav.push(TournamentsPage);
+  }
+
 }

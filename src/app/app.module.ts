@@ -7,11 +7,20 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyTeamsPage } from '../pages/my-teams/my-teams';
+import { TournamentsPage } from '../pages/tournaments/tournaments';
+import { GamePage } from '../pages/game/game';
+import { TeamDetailPage } from '../pages/team-detail/team-detail';
+import { TeamsPage } from '../pages/teams/teams';
+
 
 @NgModule({
   declarations: [
     MyApp,
-    MyTeamsPage
+    MyTeamsPage,
+    TournamentsPage,
+    GamePage,
+    TeamDetailPage,
+    TeamsPage
   ],
   imports: [
     BrowserModule,
@@ -20,7 +29,11 @@ import { MyTeamsPage } from '../pages/my-teams/my-teams';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    MyTeamsPage
+    MyTeamsPage,
+    GamePage,
+    TeamsPage,
+    TeamDetailPage,
+    TournamentsPage
   ],
   providers: [
     StatusBar,
