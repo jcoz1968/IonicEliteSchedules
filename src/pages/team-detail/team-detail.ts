@@ -18,4 +18,8 @@ export class TeamDetailPage {
     console.log('ionViewDidLoad TeamDetailPage');
   }
 
+  goHome() {
+    this.navCtrl.parent.parent.popToRoot();
+  }
+
 }
