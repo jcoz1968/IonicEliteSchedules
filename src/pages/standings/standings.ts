@@ -24,21 +24,22 @@ export class StandingsPage {
     let tourneyData = this.eliteApi.getCurrentTourney();
     this.standings = tourneyData.standings;
 
-    this.allStandings =
-      _.chain(this.standings)
-       .groupBy('division')
-       .toPairs()
-       .map(item => _.zipObject(['divisionName', 'divisionStandings'], item))
-       .value();
+    this.allStandings = tourneyData.standings;
+
+    // this.allStandings =
+    //   _.chain(this.standings)
+    //    .groupBy('division')
+    //    .toPairs()
+    //    .map(item => _.zipObject(['divisionName', 'divisionStandings'], item))
+    //    .value();
 
     console.log('standings:', this.standings);
     console.log('division Standings', this.allStandings);
-    // this.allStandings = tourneyData.standings;
-
-    // this.filterDivision();
+    this.filterDivision();
   }
 
   filterDivision(){
+    console.log(this.divisionFilter);
     if(this.divisionFilter === 'all'){
       this.standings = this.allStandings;
     } else {
