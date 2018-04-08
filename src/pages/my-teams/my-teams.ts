@@ -9,7 +9,8 @@ import { TeamHomePage } from '../team-home/team-home';
   templateUrl: 'my-teams.html'
 })
 export class MyTeamsPage {
-  favorites =[
+  //favorites =[];
+  favorites=[
     {
       team: { id: 6192, name: 'HC Elite 7th', coach: 'Michelotti' },
       tournamentId: '89e13aa2-ba6d-4f55-9cc2-61eba6172c63',
@@ -39,7 +40,7 @@ export class MyTeamsPage {
     });
     loader.present();
     this.eliteApi.getTournamentData(favorite.tournamentId)
-      .subscribe(a => this.nav.push(TeamHomePage, favorite.team));
+    .subscribe(t => this.nav.push(TeamHomePage, favorite.team));
   }
 
 }
