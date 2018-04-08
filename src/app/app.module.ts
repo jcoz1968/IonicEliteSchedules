@@ -16,6 +16,7 @@ import { EliteApi } from '../providers/elite-api/elite-api';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { UserSettings } from '../providers/user-settings/user-settings';
+import { MapPage } from '../pages/map/map';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { UserSettings } from '../providers/user-settings/user-settings';
     TeamsPage,
     StandingsPage,
     GamePage,
-    TeamHomePage
+    TeamHomePage,
+    MapPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { UserSettings } from '../providers/user-settings/user-settings';
     TeamDetailPage,
     TournamentsPage,
     StandingsPage,
-    TeamHomePage
+    TeamHomePage,
+    MapPage
   ],
   providers: [
     StatusBar,

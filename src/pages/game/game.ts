@@ -1,3 +1,4 @@
+import { MapPage } from './../map/map';
 import { TeamHomePage } from './../team-home/team-home';
 import { EliteApi } from './../../providers/elite-api/elite-api';
 import { Component } from '@angular/core';
@@ -33,11 +34,11 @@ export class GamePage {
   }
 
   goToMap(){
-    // this.nav.push(MapPage, this.game);
+    this.nav.push(MapPage, this.game);
   }
 
   isWinner(score1, score2){
-    return Number(score1) > Number(score2);
+    return Number(score1) > Number(score2) ? 'primary' : 'danger';
   }
 
 }
