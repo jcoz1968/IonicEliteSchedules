@@ -8,21 +8,20 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'game.html',
 })
 export class GamePage {
-  public game: any = {};
+  game: any = {};
 
-  constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    private eliteApi: EliteApi) {
-  }
+  constructor(
+    private nav: NavController,
+    private navParams: NavParams,
+    private eliteApi: EliteApi) { }
 
-  ionViewDidLoad() {
+  ionViewDidLoad(){
     this.game = this.navParams.data;
   }
 
-  teamTapped(teamId) {
+  teamTapped(teamId){
     let tourneyData = this.eliteApi.getCurrentTourney();
     let team = tourneyData.teams.find(t => t.id === teamId);
-    this.navCtrl.push(TeamHomePage, team);
+    this.nav.push(TeamHomePage, team);
   }
-
 }

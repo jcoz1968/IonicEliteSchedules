@@ -9,16 +9,16 @@ import { MyTeamsPage } from '../my-teams/my-teams';
   templateUrl: 'team-home.html',
 })
 export class TeamHomePage {
-  public team: any = {};
-  public teamDetailTab = TeamDetailPage;
-  public standingsTab = StandingsPage;
+  team: any = {};
+  teamDetailTab = TeamDetailPage;
+  standingsTab = StandingsPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private navCtrl: NavController, private navParams: NavParams) {
     this.team = this.navParams.data;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TeamHomePage');
+    // console.log('ionViewDidLoad TeamHomePage');
   }
 
   goHome() {
