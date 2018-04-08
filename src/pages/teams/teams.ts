@@ -9,9 +9,9 @@ import * as _ from 'lodash';
   templateUrl: 'teams.html',
 })
 export class TeamsPage {
-  public teams = [];
-  public allTeams: any;
+  private allTeams: any;
   private allTeamDivisions: any;
+  teams = [];
 
   constructor(
     public navCtrl: NavController,
@@ -22,6 +22,7 @@ export class TeamsPage {
 
   ionViewDidLoad() {
     let selectedTourney = this.navParams.data;
+    // console.log(selectedTourney);
 
     let loader = this.loadingController.create({
       content: 'Getting data...'
@@ -39,7 +40,7 @@ export class TeamsPage {
                 .value();
 
           this.teams = this.allTeamDivisions;
-          console.log('division teams', this.teams);
+          // console.log('division teams', this.teams);
 
           loader.dismiss();
       });
@@ -47,6 +48,7 @@ export class TeamsPage {
   }
 
   itemTapped($event, team) {
+    // console.log(team);
     this.navCtrl.push(TeamHomePage, team);
   }
 

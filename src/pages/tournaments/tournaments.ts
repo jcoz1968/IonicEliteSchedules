@@ -34,7 +34,7 @@ export class TournamentsPage {
   }
 
   itemTapped($event, tournament) {
-    // this.navCtrl.push(MyTeamsPage);
+    // console.log(tournament);
     this.navCtrl.push(TeamsPage, tournament);
   }
 
