@@ -1,10 +1,9 @@
+import { TournamentsPage } from './../pages/tournaments/tournaments';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { MyTeamsPage } from '../pages/my-teams/my-teams';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,7 +11,7 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = MyTeamsPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -20,10 +19,9 @@ export class MyApp {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
-    ];
+    // this.pages = [
+    //   { title: 'Home', component: MyTeamsPage }
+    // ];
 
   }
 
@@ -41,4 +39,13 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  goHome() {
+    this.nav.push(MyTeamsPage);
+  }
+
+  goToTournaments() {
+    this.nav.push(TournamentsPage);
+  }
+
 }
