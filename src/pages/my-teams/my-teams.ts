@@ -1,3 +1,4 @@
+import { UserSettings } from './../../providers/user-settings/user-settings';
 import { EliteApi } from './../../providers/elite-api/elite-api';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
@@ -10,22 +11,23 @@ import { TeamHomePage } from '../team-home/team-home';
 })
 export class MyTeamsPage {
   //favorites =[];
-  favorites = [
-    {
-        team: { id: 6182, name: 'HC Elite 7th', coach: 'Michelotti' },
-        tournamentId: '89e13aa2-ba6d-4f55-9cc2-61eba6172c63',
-        tournamentName: 'March Madness Tournament'
-    },
-    {
-        team: { id: 805, name: 'HC Elite', coach: 'Michelotti' },
-        tournamentId: '98c6857e-b0d1-4295-b89e-2d95a45437f2',
-        tournamentName: 'Holiday Hoops Challenge'
-    }
-  ];
+  favorites = [];
+  //   {
+  //       team: { id: 6182, name: 'HC Elite 7th', coach: 'Michelotti' },
+  //       tournamentId: '89e13aa2-ba6d-4f55-9cc2-61eba6172c63',
+  //       tournamentName: 'March Madness Tournament'
+  //   },
+  //   {
+  //       team: { id: 805, name: 'HC Elite', coach: 'Michelotti' },
+  //       tournamentId: '98c6857e-b0d1-4295-b89e-2d95a45437f2',
+  //       tournamentName: 'Holiday Hoops Challenge'
+  //   }
+  // ];
 
   constructor(
     private nav: NavController,
     private loadingController: LoadingController,
+    private userService: UserSettings,
     private eliteApi: EliteApi
   ) {}
 
@@ -41,6 +43,10 @@ export class MyTeamsPage {
 
   goToTournaments(){
       this.nav.push(TournamentsPage);
+  }
+
+  ionViewDidEnter(){
+    this.favorites = this.userService.getAllFavorites();
   }
 
 }

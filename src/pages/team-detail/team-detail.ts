@@ -1,3 +1,4 @@
+import { UserSettings } from './../../providers/user-settings/user-settings';
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { GamePage } from '../../pages/game/game';
@@ -25,7 +26,8 @@ export class TeamDetailPage {
     private toastController: ToastController,
     private nav: NavController,
     private navParams: NavParams,
-    private eliteApi: EliteApi) {}
+    private eliteApi: EliteApi,
+    private userService: UserSettings) {}
 
   ionViewDidLoad(){
     this.team = this.navParams.data;
@@ -50,6 +52,8 @@ export class TeamDetailPage {
 
     this.allGames = this.games;
     this.teamStanding = _.find(this.tourneyData.standings, { 'teamId': this.team.id });
+    this.userService.isFavoriteTeam(this.team.id.toString())
+    .then(value => this.isFollowing = value);
   }
 
   dateChanged() {
@@ -95,6 +99,7 @@ export class TeamDetailPage {
             text: 'Yes',
             handler: () => {
               this.isFollowing = false;
+              this.userService.unFavoriteTeam(this.team);
 
               let toast = this.toastController.create({
                 message: 'You have unfollowed this team.',
@@ -112,7 +117,15 @@ export class TeamDetailPage {
       confirm.present();
     } else {
       this.isFollowing = true;
+      this.userService.favoriteTeam(this.team, this.tourneyData.tournament.id, this.tourneyData.tournament.name);
     }
+  }
+
+  refreshAll(refresher) {
+    this.eliteApi.refreshCurrentTourney().subscribe(() => {
+      refresher.complete();
+      this.ionViewDidLoad();
+    });
   }
 
 }
