@@ -3,7 +3,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher (ionRefresh)="refreshAll($event)">
+    <ion-refresher-content>
 
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-card>
     <ion-card-content>
       <ion-row>
@@ -11,7 +15,7 @@
           <h2>Record: {{ teamStanding.wins }}-{{teamStanding.losses}}</h2>
           <p>Coach: {{team.coach}}</p>
         </ion-col>
-        <ion-col>
+        <ion-col text-right>
             <!-- <button ion-button icon-left outline
             (click)="toggleFollow()"
             *ngIf="!isFollowing">
